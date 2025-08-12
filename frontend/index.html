@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSR Stress Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="dashboard">
+        <!-- Header -->
+        <header class="header">
+            <h1>GSR Stress Dashboard</h1>
+            <button class="btn btn--secondary theme-toggle" id="themeToggle">
+                🌙 Dark Mode
+            </button>
+        </header>
+
+        <!-- Main Content Grid -->
+        <main class="main-content">
+            <!-- Data Ingest Panel -->
+            <section class="card data-ingest">
+                <div class="card__body">
+                    <h3>Data Input</h3>
+                    <div class="form-group">
+                        <label for="csvUpload" class="form-label">Upload Session CSV</label>
+                        <input type="file" id="csvUpload" accept=".csv" class="form-control">
+                    </div>
+                    <button class="btn btn--outline" id="loadSampleBtn">Load Sample Data</button>
+                    <div id="uploadStatus" class="upload-status"></div>
+                </div>
+            </section>
+
+            <!-- Live Charts Area -->
+            <section class="card charts-area">
+                <div class="card__body">
+                    <h3>GSR Signal & Stress Threshold</h3>
+                    <div class="chart-container" style="position: relative; height: 300px;">
+                        <canvas id="gsrChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Statistics Panel -->
+            <section class="card stats-panel">
+                <div class="card__body">
+                    <h3>Session Statistics</h3>
+                    <div class="stats-grid" id="statsGrid">
+                        <div class="stat-item">
+                            <span class="stat-label">Mean GSR:</span>
+                            <span class="stat-value" id="meanGsr">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Std Dev:</span>
+                            <span class="stat-value" id="stdGsr">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Min:</span>
+                            <span class="stat-value" id="minGsr">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Max:</span>
+                            <span class="stat-value" id="maxGsr">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Range:</span>
+                            <span class="stat-value" id="rangeGsr">--</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Samples:</span>
+                            <span class="stat-value" id="sampleCount">--</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stress Classification Pie -->
+            <section class="card pie-chart">
+                <div class="card__body">
+                    <h3>Stress Classification</h3>
+                    <div class="chart-container" style="position: relative; height: 250px;">
+                        <canvas id="stressPieChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Forecast Panel -->
+            <section class="card forecast-panel">
+                <div class="card__body">
+                    <h3>Stress Forecast</h3>
+                    <div class="forecast-form">
+                        <div class="form-group">
+                            <label for="minutesAhead" class="form-label">Minutes Ahead</label>
+                            <input type="number" id="minutesAhead" value="30" min="1" max="120" class="form-control">
+                        </div>
+                        <button class="btn btn--primary" id="predictBtn">Predict</button>
+                    </div>
+                    <div class="forecast-result" id="forecastResult">
+                        <div class="forecast-value">
+                            <span class="forecast-label">Predicted GSR:</span>
+                            <span id="predictedGsr">--</span>
+                        </div>
+                        <div class="forecast-stress">
+                            <span class="forecast-label">Stress Level:</span>
+                            <span id="predictedStress" class="status">--</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Frontend only – connect to Python backend for real-time streaming</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
