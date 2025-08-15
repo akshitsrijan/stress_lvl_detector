@@ -1,0 +1,9 @@
+Hi...
+Couldn't find an accurate image for the GSR sensor connection so I made a .txt file for listing out the connections.
+It is very simple and straightforward.
+
++5V of GSR----------> +5V of arduino uno
+GND of GSR----------> GND of arduino uno
+OUT (GSR)-----------> analog pin A0 of arduino uno
+
+Hope this is easy to understand :)
