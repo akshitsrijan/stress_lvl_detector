@@ -7,3 +7,5 @@ GND of GSR----------> GND of arduino uno
 OUT (GSR)-----------> analog pin A0 of arduino uno
 
 Hope this is easy to understand :)
+
+Apart from this, I added a RED LED for alert messages if in case the the value exceeds the limit.
